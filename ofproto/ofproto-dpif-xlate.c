@@ -5079,7 +5079,7 @@ pof_do_xlate_actions(const struct ofpact *ofpacts, size_t ofpacts_len,
         	/*VLOG_INFO("+++++++tsf pof_do_xlate_actions OFPACT_OUTPUT->type:%d, len:%d", a->type, a->len);*/
         	flow->telemetry.out_port = ofpact_get_OUTPUT(a)->port;
         	flow->telemetry.fwd_acts |= fwd_acts;
-        	VLOG_INFO("pof_do_xlate_actions, fwd_acts: %08x\n", fwd_acts);
+        	/*VLOG_INFO("pof_do_xlate_actions, fwd_acts: %08x\n", fwd_acts);*/
             xlate_output_action(ctx, ofpact_get_OUTPUT(a)->port,
                                 ofpact_get_OUTPUT(a)->max_len, true);
             break;
