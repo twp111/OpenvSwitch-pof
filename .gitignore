@@ -75,3 +75,4 @@ testsuite.tmp.orig
 
 # clion debug files
 cmake-build-debug
+.idea

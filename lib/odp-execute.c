@@ -336,8 +336,13 @@ odp_pof_add_field(struct dp_packet *packet, const struct ovs_key_add_field *key,
         }
 
         if (final_mapInfo & (UINT16_C(1) << 5)) { // tsf: bandwidth computation insert, 4B
-            bandwidth = (bd_info->n_bytes + INVISIBLE_PKT_SIZE * bd_info->n_packets
-                        + (int_len + INT_DATA_BANDWIDTH_LEN) * 1) / (bd_info->diff_time * 1.0) * 8;  // Mbps
+            /* if consider INT metadata. */
+//            bandwidth = (bd_info->n_bytes + INVISIBLE_PKT_SIZE * bd_info->n_packets
+//                        + (int_len + INT_DATA_BANDWIDTH_LEN) * 1) / (bd_info->diff_time * 1.0) * 8;  // Mbps
+
+            /* if don't calculate INT metadata. */
+            bandwidth = (bd_info->n_bytes + INVISIBLE_PKT_SIZE * bd_info->n_packets) / (bd_info->diff_time * 1.0) * 8;  // Mbps
+
             memcpy(int_value + int_len, &bandwidth, INT_DATA_BANDWIDTH_LEN);      // stored as float type
             int_len += INT_DATA_BANDWIDTH_LEN;
             /*VLOG_INFO("++++++tsf odp_pof_add_field: bandwidth: 0x%04x / %f Mbps", bandwidth, bandwidth);*/
