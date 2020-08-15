@@ -224,7 +224,7 @@ main(int argc, char *argv[])
 #endif
 
     }
-    pthread_exit(NULL);
+
     bridge_exit();
     unixctl_server_destroy(unixctl);
     service_stop();

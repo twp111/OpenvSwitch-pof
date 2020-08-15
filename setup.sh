@@ -109,7 +109,7 @@ ovs-vsctl add-port br0 dpdk1 -- set Interface dpdk1 type=dpdk
 sleep 1s
 
 ## set datapath-id of ovs, must be 8B decimal number, cannot omit zeros.
-ovs-vsctl set bridge br0 other-config:datapath-id=0000000000000001
+ovs-vsctl set bridge br0 other-config:datapath-id=ffffffffffffff01
 
 #ovs-appctl -t ovs-vswitchd exit
 #ovs-vswitchd --pidfile
