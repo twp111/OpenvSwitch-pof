@@ -62,6 +62,7 @@ static char *parse_options(int argc, char *argv[], char **unixctl_path);
 OVS_NO_RETURN static void usage(void);
 
 /* defined by tsf, called by ovs-vswitchd.c/main() */
+#define BER_TCP_SOCK    /* tsf: uncomment `BER_TCP_SOCK` to build tcp client socket, and receive 'ber' from transponder */
 #define BER_TCP_SOCK_CLIENT true
 #define SERVER_ADDR "192.168.109.214"
 #define SOCKET_PORT 2020
@@ -210,6 +211,7 @@ main(int argc, char *argv[])
             exiting = true;
         }
 
+#ifdef BER_TCP_SOCK   /* tsf: uncomment `BER_TCP_SOCK` to build tcp client socket, and receive 'ber' from transponder */
         /* only run thread once */
         if (BER_TCP_SOCK_CLIENT_RUN_ONCE) {
             int ret = pthread_create(&ber_collector_thread, NULL, (void *) &setup_ber_sock_collector, NULL);
@@ -219,6 +221,7 @@ main(int argc, char *argv[])
 //                VLOG_INFO("++++tsf in main, setup_ber_sock_collector thread start.");
             }
         }
+#endif
 
     }
     pthread_exit(NULL);
