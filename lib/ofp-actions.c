@@ -7345,7 +7345,7 @@ ovs_instruction_type_from_ofpact_type(enum ofpact_type type)
     case OFPACT_ADD_FIELD:    /* tsf */
     case OFPACT_DELETE_FIELD:  /* tsf */
     case OFPACT_GROUP:			/* tsf */
-    case OFPACT_CALCULATE_CHECKSUM  /* twp */
+    case OFPACT_CALCULATE_CHECKSUM: /* twp */
     case OFPACT_CONTROLLER:
     case OFPACT_ENQUEUE:
     case OFPACT_OUTPUT_REG:
