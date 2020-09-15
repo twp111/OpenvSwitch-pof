@@ -326,6 +326,15 @@ struct ovs_flow_stats {
 	__u64 n_bytes;           /* Number of matched bytes. */
 };
 
+struct ovs_key_calculate_checksum{
+    uint8_t checksum_pos_type;
+    uint8_t cal_startpos_type;
+    uint16_t  checksum_pos;
+    uint16_t   checksum_len;
+    uint16_t   cal_startpos;
+    uint16_t   cal_len;
+};
+
 struct ovs_key_set_field {
 	uint16_t field_id;
 	uint16_t offset;
@@ -396,7 +405,7 @@ enum ovs_key_attr {
 	OVS_KEY_ATTR_MODIFY_FIELD, /* tsf: modify_field action in pof */
 	OVS_KEY_ATTR_ADD_FIELD,    /* tsf: add_field action in pof */
 	OVS_KEY_ATTR_DELETE_FIELD, /* tsf: delete_field action in pof */
-
+    OVS_KEY_ATTR_CALCULATE_CHECKSUM, /* twp: calculate checksum */
 #ifdef __KERNEL__
 	/* Only used within kernel data path. */
 	OVS_KEY_ATTR_TUNNEL_INFO,  /* struct ovs_tunnel_info */
