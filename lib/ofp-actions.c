@@ -879,7 +879,7 @@ encode_CALCULATE_CHECKSUM(const struct ofpact_calculate_checksum *ocf,
 {
     VLOG_INFO("++++++twp encode_CALCULATE_CHECKSUM: start");
     struct ofp10_action_calculate_checksum *occf;
-    occf=put_OFPAT10_CAlCULATE_CHECKSUM(out);
+    occf=put_OFPAT10_CALCULATE_CHECKSUM(out);
 
     //if need to classify,will classify
     occf->checksum_pos_type=ocf->checksum_pos_type;
