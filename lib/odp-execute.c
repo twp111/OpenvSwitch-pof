@@ -188,6 +188,13 @@ bool use_controller_offset = false;
 uint64_t INT_HEADER_PKT_CNT = 0;       // count packets for N to insert INT header
 
 static void
+odp_pof_calculate_checkusm(struct dp_packet *packet, const struct ovs_key_calculate_checksum *key,
+                           const struct ovs_key_calculate_checksum *mask)
+{
+
+}
+
+static void
 odp_pof_add_field(struct dp_packet *packet, const struct ovs_key_add_field *key,
                   const struct ovs_key_add_field *mask, long long ingress_time,
                   struct bandwidth_info *bd_info)
@@ -813,6 +820,11 @@ odp_execute_masked_set_action(struct dp_packet *packet,
     						get_mask(a, struct ovs_key_add_field),
     						ingress_time, bd_info);
     	break;
+    case OVS_KEY_ATTR_CALCULATE_CHECKSUM:
+        /*VLOG_INFO("+++++++++++twp odp_execute_masked_set_action: before OVS_KEY_ATTR_CALCULATE_CHECKSUM");*/
+        odp_pof_calculate_checkusm(packet, nl_attr_get(a),
+                               get_mask(a, struct ovs_key_calculate_checksum));
+        break;
     case OVS_KEY_ATTR_DELETE_FIELD:
     	/*VLOG_INFO("+++++++++++tsf odp_execute_masked_set_action: before OVS_KEY_ATTR_DELETE_FIELD");*/
     	odp_pof_delete_field(packet, nl_attr_get(a),
