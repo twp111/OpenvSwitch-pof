@@ -5143,7 +5143,7 @@ pof_do_xlate_actions(const struct ofpact *ofpacts, size_t ofpacts_len,
     const struct ofpact_drop *drop;
     const struct ofpact_modify_field *modify_field;
     const struct ofpact_delete_field *delete_field;
-    const struct odpact_calculate_checksum *calculate_checksum;
+    const struct ofpact_calculate_checksum *calculate_checksum;
     const struct mf_field *mf;
 
     OFPACT_FOR_EACH (a, ofpacts, ofpacts_len) {
